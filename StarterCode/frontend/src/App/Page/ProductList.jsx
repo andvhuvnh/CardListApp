@@ -24,22 +24,6 @@ const ProductList = () => {
     };
     fetchProducts();
   }, []);
-/*
-  return (
-    <div>
-      <h1>Product List</h1>
-      {products.length > 0 ? (
-        <ul>
-          {products.map((product) => (
-            <li key={product.id}>{product.name}</li>
-          ))}
-        </ul>
-      ) : (
-        <p>No products available</p>
-      )}
-    </div>
-  );
-*/
 
   //Function to get products
   const fetchProducts = async() => {
@@ -68,6 +52,7 @@ const ProductList = () => {
     fetchProducts();
   }, []);
 
+  //Ensure frontend is responsive and wraps around depending on screen size and is centered
   return (
     <Container >
       <Grid container spacing ={4} justifyContent="center">
@@ -78,7 +63,7 @@ const ProductList = () => {
                 <img src={product.imageUrl} alt={product.name} style={{width: '100%'}} />
                 <Typography variant="h5">{product.name}</Typography>
                 <Typography variant="body2">{product.description}</Typography>
-                <Typography variant="h6">{product.price}</Typography>
+                <Typography variant="h6">${product.price}</Typography>
                 <IconButton onClick={()=> handleDelete(product.id)}>
                   <DeleteIcon />
                 </IconButton>
