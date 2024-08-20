@@ -11,31 +11,18 @@ import DeleteIcon from '@mui/icons-material/Delete';
 const ProductList = () => {
   //State to manage products 
   const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await axios.get('http://localhost:5001/api/products');
-        console.log(response.data); // Log the response to see the image URLs
-        setProducts(response.data);
-      } catch (error) {
-        console.error("Error fetching products", error);
-      }
-    };
-    fetchProducts();
-  }, []);
+  const [error, setError] = useState(null);
 
   //Function to get products
   const fetchProducts = async() => {
     try {
       const response = await axios.get(`http://localhost:5001/api/products`);
-      console.log(response.data);
       setProducts(response.data);
     } catch(error){
       console.error("Error fetching products", error);
+      setError("Error fetching products")
     }
   };
-
 
   //Function to delete a product
   const handleDelete = async(id) => {
@@ -55,6 +42,7 @@ const ProductList = () => {
   //Ensure frontend is responsive and wraps around depending on screen size and is centered
   return (
     <Container >
+      {error && <Typography variant="body2" color="error">{error}</Typography>}
       <Grid container spacing ={4} justifyContent="center">
         {products.map(product => (
           <Grid item key={product.id} xs={12} sm={6} md={4}>
