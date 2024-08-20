@@ -13,6 +13,15 @@ const ProductList = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get('http://localhost:5001/api/products');
+        console.log(response.data); // Log the response to see the image URLs
+        setProducts(response.data);
+      } catch (error) {
+        console.error("Error fetching products", error);
+      }
+    };
     fetchProducts();
   }, []);
 /*

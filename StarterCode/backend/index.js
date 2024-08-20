@@ -25,11 +25,13 @@ const fetchImageUrl = () => {
     return `https://picsum.photos/200/200?random=${Math.floor(Math.random() * 1000)}`;
 };
 
-products = products.map(product => ({
-    ...product,
-    imageUrl: fetchImageUrl
-}));
-
+app.get('/api/products', (req, res) => {
+    products = products.map(product => ({
+        ...product,
+        imageUrl: fetchImageUrl()
+    }));
+    res.json(products);
+});
 //implement the get api for getting products
 app.get('/api/products', (req, res) => {
     res.json(products);
