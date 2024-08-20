@@ -4,8 +4,8 @@ This repository contains a full-stack web application that displays a list of pr
 ## Installation
 1. Clone this repo to your local machine.
 2. Install dependencies
-    - Navigate to the backend directory and run "npm install"
-    - Navigate to the frontend directory and run "npm install"
+    - Navigate to the backend directory and run `npm install`
+    - Navigate to the frontend directory and run `npm install`
 ## Running the backend 
 1. Navigate to the backend and run "npm start"
     - The backend will start on `http://localhost:5001`
